@@ -105,7 +105,11 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,5
 
 /* reseñas */
 #resenas{border-top:1px solid var(--line)}
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.rating{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap;margin:-14px 0 30px}
+.rating .score{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;line-height:1}
+.rating .stars{color:var(--gold2);letter-spacing:.15em}
+.rating .count{color:var(--muted);font-size:.9rem}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;max-width:760px;margin:0 auto}
 .review{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:12px}
 .review .stars{color:var(--gold2);letter-spacing:.2em;font-size:.9rem}
 .review blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;line-height:1.45;flex:1}
@@ -184,7 +188,15 @@ footer a{color:var(--gold2)}
     <div class="eyebrow gold-text">Lo que dicen</div>
     <h2>Reseñas</h2>
     <div class="divider"></div>
+    <div class="rating">
+      <span class="score gold-text">5,0</span>
+      <span class="stars">★★★★★</span>
+      <span class="count">6 reseñas en Google</span>
+    </div>
     <div class="reviews" id="reviews"></div>
+    <div class="btns" style="margin-top:30px">
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://maps.google.com/?cid=10195765786615341972">Ver y dejar reseñas en Google</a>
+    </div>
   </div>
 </section>
 
@@ -289,7 +301,11 @@ const equipo = [
 
 // Reseñas reales de clientas: { nombre:"María G.", texto:"...", estrellas:5, servicio:"Keratina" }
 // Mientras la lista esté vacía, la sección no se muestra.
-const resenas = [];
+// Copiadas textuales de Google Maps (las que tienen texto escrito).
+const resenas = [
+  { nombre:"Pilares Servicios Profesionales", texto:"Espectacular lugar para pasar hermosos momentos y mimarse. Exelente atención.", estrellas:5 },
+  { nombre:"Claudia A.", texto:"Semipermanente uñas excelente atencion", estrellas:5, servicio:"Uñas" }
+];
 
 const fmt = n =>"$" + n.toLocaleString("es-AR");
 const waLink = msg => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
