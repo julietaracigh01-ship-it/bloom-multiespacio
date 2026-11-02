@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bloom Multiespacio · Estética en Pilar</title>
 <meta name="description" content="Bloom Multiespacio: peluquería, uñas, pestañas, estética facial, pedicuría y masajes en Pilar, Buenos Aires. Reservá tu turno por WhatsApp.">
-<link rel="icon" href="logo.jpg">
+<link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -39,10 +39,21 @@ nav ul a{color:var(--muted);transition:color .2s}
 nav ul a:hover{color:var(--gold1)}
 @media(max-width:640px){nav ul{gap:14px;font-size:.7rem;letter-spacing:.08em}.brand{display:none}nav .wrap{justify-content:center}}
 
-/* hero */
-.hero{text-align:center;padding:40px 0 70px}
-.hero img{width:min(420px,88vw);margin:0 auto;mix-blend-mode:screen}
-.hero p{max-width:520px;margin:6px auto 30px;color:var(--muted);font-size:1.05rem}
+/* hero: banner horizontal con foto */
+.hero{position:relative;min-height:min(78vh,640px);display:flex;align-items:center;overflow:hidden;
+  background:url("banner.jpg") 60% center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.88) 32%,rgba(0,0,0,.45) 62%,rgba(0,0,0,.15) 100%),
+             linear-gradient(0deg,var(--bg) 0%,rgba(11,11,11,0) 22%)}
+.hero .wrap{position:relative;width:100%}
+.hero-content{max-width:440px;text-align:center;padding:30px 0}
+.hero img{width:min(380px,80vw);margin:-30px auto -20px;mix-blend-mode:screen}
+.hero p{margin:0 auto 26px;color:#d8cfbd;font-size:1.05rem}
+@media(max-width:760px){
+  .hero{background-position:62% center;min-height:560px}
+  .hero::before{background:linear-gradient(0deg,var(--bg) 0%,rgba(0,0,0,.72) 35%,rgba(0,0,0,.6) 100%)}
+  .hero-content{margin:0 auto}
+}
 .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:40px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
@@ -81,7 +92,11 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,5
 .item .price{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;white-space:nowrap}
 .item .book{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--line);padding:4px 11px;border-radius:20px;transition:.2s;white-space:nowrap}
 .item .book:hover{background:var(--gold2);color:#1a1409}
-.item small{display:block;color:var(--muted);font-size:.82rem}
+.item small{display:block;color:var(--muted);font-size:.85rem;line-height:1.45;margin-top:3px}
+.intro{text-align:center;color:var(--muted);max-width:600px;margin:-6px auto 18px;font-size:.95rem}
+.cat{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase;margin:34px 0 4px;color:var(--gold1)}
+.cat:first-of-type{margin-top:10px}
+.cat-note{color:var(--gold2);font-size:.88rem;font-style:italic;margin:12px 0 0}
 @media(max-width:560px){.item{flex-wrap:wrap}.item .dots{display:none}.item .name{flex:1 0 60%}}
 .note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
 
@@ -122,11 +137,13 @@ footer a{color:var(--gold2)}
 
 <header class="hero" id="inicio">
   <div class="wrap">
-    <img src="logo.jpg" alt="Bloom Multiespacio">
-    <p>Un espacio pensado para vos: peluquería, uñas, pestañas, estética facial, pedicuría y masajes, todo en un mismo lugar.</p>
-    <div class="btns">
-      <a class="btn primary" data-wa="Hola! Quiero reservar un turno en Bloom Multiespacio." href="#">Reservar turno</a>
-      <a class="btn ghost" href="#servicios">Ver servicios</a>
+    <div class="hero-content">
+      <img src="logo.png" alt="Bloom Multiespacio">
+      <p>Un espacio pensado para vos: peluquería, uñas, pestañas, dermatocosmiatría, pedicuría y masajes, todo en un mismo lugar.</p>
+      <div class="btns">
+        <a class="btn primary" data-wa="Hola! Quiero reservar un turno en Bloom Multiespacio." href="#">Reservar turno</a>
+        <a class="btn ghost" href="#servicios">Ver servicios</a>
+      </div>
     </div>
   </div>
 </header>
@@ -206,12 +223,14 @@ footer a{color:var(--gold2)}
 const WA = "5491141741944";
 
 // Para editar servicios, precios u horarios, modificá solo esta lista.
+// Cada servicio es ["Nombre", precio] o ["Nombre", precio, "descripción"].
+// {cat:"..."} agrega un subtítulo y {nota:"..."} una aclaración.
 const equipo = [
-  { id:"peluqueria", tab:"Peluquería", nombre:"Peluquería", rol:"Cabello", dias:"Martes y sábados", horario:"10 a 19 hs",
+  { id:"peluqueria", tab:"Peluquería", nombre:"Karina Brandán", rol:"Peluquería", dias:"Martes y sábados", horario:"10 a 19 hs",
     servicios:[
       ["Alisado",65000],["Keratina",60000],["Botox capilar",55000],["Lavado y corte capilar",50000],
       ["Cauterización",50000],["Nutrición",35000],
-      ["Trenzas · hasta 6 trenzas",15000],["Trenzas con diseño",20000],["Coloración completa",30000]
+      ["Trenzas · hasta 6 trenzas",15000],["Trenzas con diseño",20000],["Corona completa",30000]
     ]},
   { id:"bea", tab:"Uñas, pestañas y facial", nombre:"Bea García", rol:"Uñas · Pestañas · Facial", dias:"Martes a sábado", horario:"12 a 19:30 hs",
     servicios:[
@@ -219,9 +238,30 @@ const equipo = [
       ["Extensión de pestañas veganas",35000],["Lifting de pestañas coreano",33000],["Perfilado con diseño",18000],
       ["Limpieza profunda facial con activos",35000],["Belleza de pies + semipermanente",30000]
     ]},
-  { id:"claudio", tab:"Pedicuría", nombre:"Claudio Brandón", rol:"Pedicuría", dias:"Martes y viernes", horario:"12 a 19 hs",
+  { id:"julieta", tab:"Dermatocosmiatría", nombre:"Julieta Bringas", rol:"Dermatocosmiatra", dias:"Lunes a sábado", horario:"9 a 19 hs",
+    intro:"Todos nuestros tratamientos son personalizados. Trabajamos a partir de una evaluación para identificar las necesidades de cada piel y seleccionar las técnicas, activos y aparatología más adecuados.",
+    servicios:[
+      {cat:"Tratamientos faciales"},
+      ["Limpieza facial clásica",30000,"Limpieza con exfoliación, extracciones, mascarilla tratante según las necesidades de la piel y aparatología."],
+      ["Limpieza facial profunda",35000,"Incluye limpieza profunda, extracciones, aparatología, activos específicos según necesidad, fototerapia LED y masajes linfáticos faciales."],
+      ["Limpieza facial + peeling",42000,"Tratamiento orientado a favorecer la renovación de la piel y mejorar su textura, luminosidad y apariencia."],
+      ["Limpieza facial + dermaplaning",42000,"Ideal para mejorar la suavidad y luminosidad mediante la remoción de células superficiales y vello fino."],
+      ["Limpieza facial + peeling + dermaplaning",50000,"Combinación de técnicas para mejorar la textura y luminosidad, siempre que sean adecuadas para la piel."],
+      ["Limpieza facial + microneedling",55000,"Tratamiento orientado a estimular la producción de colágeno y mejorar progresivamente la apariencia de líneas de expresión, textura, firmeza y determinadas manchas, según cada caso."],
+      {nota:"♡ Todos los tratamientos faciales incluyen asesoramiento y armado de rutina de skincare personalizada."},
+      {cat:"Cejas & lifting"},
+      ["Perfilado de cejas con diseño",18000],["Perfilado de cejas + tinte / henna",25000],
+      ["Laminado de cejas + perfilado",30000],["Lifting de pestañas",25000],["Tinte de pestañas (adicional)",5000],
+      {cat:"Labios"},
+      ["Hydralips",32000,"Tratamiento estético orientado a mejorar la hidratación y apariencia de los labios."],
+      {cat:"Tratamientos corporales"},
+      ["Limpieza profunda de espalda",40000,"Tratamiento de higiene profunda con extracciones y técnicas adaptadas a las necesidades de la piel."],
+      ["Exfoliación e hidratación de piernas",35000,"Tratamiento para renovar, suavizar e hidratar la piel."],
+      ["Limpieza profunda de espalda + peeling o dermaplaning",45000,"Protocolo combinado para favorecer la renovación y mejorar la textura y apariencia de la piel, según evaluación previa."]
+    ]},
+  { id:"claudio", tab:"Pedicuría", nombre:"Claudio Brandán", rol:"Pedicuría", dias:"Martes y viernes", horario:"12 a 19 hs",
     servicios:[["Tratamiento de pedicuría",33000]]},
-  { id:"flor", tab:"Masajes", nombre:"Florencia Lenfines", rol:"Masajes", dias:"Lunes, martes y jueves", horario:"18 a 19 hs",
+  { id:"flor", tab:"Masajes", nombre:"Florencia Lentines", rol:"Masajes", dias:"Lunes, martes y jueves", horario:"18 a 19 hs",
     servicios:[
       ["Masaje descontracturante",40000],["Masaje relajante",35000],["Piernas cansadas",30000],["Reflexología podal",35000]
     ]}
@@ -245,14 +285,21 @@ document.getElementById("tabs").innerHTML = equipo.map((p,i) =>
   `<button class="tab${i?"":" on"}" data-id="${p.id}">${p.tab}</button>`).join("");
 document.getElementById("groups").innerHTML = equipo.map((p,i) => `
   <div class="group${i?"":" on"}" id="g-${p.id}">
-    <div class="group-head"><h3>${p.nombre}</h3><span>${p.dias} · ${p.horario}</span></div>
-    ${p.servicios.map(([n,pr]) => `
+    <div class="group-head"><h3>${p.nombre}</h3><span>${p.rol} · ${p.dias} · ${p.horario}</span></div>
+    ${p.intro ? `<p class="intro">${p.intro}</p>` : ""}
+    ${p.servicios.map(s => s.cat ? `<div class="cat">♡ ${s.cat}</div>`
+      : s.nota ? `<p class="cat-note">${s.nota}</p>`
+      : itemHtml(...s)).join("")}
+  </div>`).join("");
+
+function itemHtml(n, pr, desc) {
+  return `
       <div class="item">
-        <span class="name">${n}</span><span class="dots"></span>
+        <span class="name">${n}${desc ? `<small>${desc}</small>` : ""}</span><span class="dots"></span>
         <span class="price gold-text">${fmt(pr)}</span>
         <a class="book" target="_blank" rel="noopener" href="${waLink(`Hola! Quiero reservar un turno para: ${n}.`)}">Turno</a>
-      </div>`).join("")}
-  </div>`).join("");
+      </div>`;
+}
 
 document.getElementById("tabs").addEventListener("click", e => {
   const b = e.target.closest(".tab"); if(!b) return;
