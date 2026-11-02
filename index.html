@@ -105,18 +105,6 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,5
 @media(max-width:560px){.item{flex-wrap:wrap}.item .dots{display:none}.item .name{flex:1 0 60%}}
 .note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
 
-/* galería */
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.gallery figure{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:6px;cursor:zoom-in;border:1px solid var(--line)}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.gallery figure:hover img{transform:scale(1.05)}
-.gallery figcaption{position:absolute;inset:auto 0 0 0;padding:28px 12px 10px;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,0));color:var(--gold1);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;text-align:center}
-@media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);gap:8px}}
-.lightbox{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:20px}
-.lightbox[hidden]{display:none}
-.lightbox img{max-width:100%;max-height:90vh;border-radius:4px}
-.lb-close{position:absolute;top:12px;right:18px;background:none;border:0;color:var(--gold1);font-size:2.4rem;cursor:pointer;line-height:1}
-
 /* reseñas */
 #resenas{border-top:1px solid var(--line)}
 .rating{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap;margin:-14px 0 30px}
@@ -197,21 +185,6 @@ footer a{color:var(--gold2)}
     <p class="note">Los precios pueden variar. Consultá por WhatsApp para confirmar tu turno.</p>
   </div>
 </section>
-
-<section class="alt" id="galeria">
-  <div class="wrap">
-    <div class="eyebrow gold-text">Inspiración</div>
-    <h2>Galería</h2>
-    <div class="divider"></div>
-    <div class="gallery" id="gallery"></div>
-    <p class="note">Imágenes ilustrativas.</p>
-  </div>
-</section>
-
-<div class="lightbox" id="lightbox" hidden>
-  <button class="lb-close" aria-label="Cerrar">×</button>
-  <img alt="">
-</div>
 
 <section id="resenas" hidden>
   <div class="wrap">
@@ -375,21 +348,6 @@ document.getElementById("tabs").addEventListener("click", e => {
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t===b));
   document.querySelectorAll(".group").forEach(g => g.classList.toggle("on", g.id==="g-"+b.dataset.id));
 });
-
-// galería (fotos de Pexels, licencia libre)
-const fotos = [
-  ["g1.jpg","Uñas"], ["g2.jpg","Pestañas"], ["g3.jpg","Facial"], ["g4.jpg","Peluquería"],
-  ["g5.jpg","Masajes"], ["g6.jpg","Manicuría"], ["g7.jpg","Dermatocosmiatría"], ["g8.jpg","Pedicuría"]
-];
-document.getElementById("gallery").innerHTML = fotos.map(([src, txt]) => `
-  <figure data-src="${src}"><img src="${src}" alt="${txt}" loading="lazy"><figcaption>${txt}</figcaption></figure>`).join("");
-const lb = document.getElementById("lightbox");
-document.getElementById("gallery").addEventListener("click", e => {
-  const f = e.target.closest("figure"); if (!f) return;
-  lb.querySelector("img").src = f.dataset.src; lb.hidden = false;
-});
-lb.addEventListener("click", e => { if (e.target !== lb.querySelector("img")) lb.hidden = true; });
-document.addEventListener("keydown", e => { if (e.key === "Escape") lb.hidden = true; });
 
 // reseñas
 if (resenas.length) {
