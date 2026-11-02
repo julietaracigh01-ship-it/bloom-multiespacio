@@ -42,16 +42,17 @@ nav ul a:hover{color:var(--gold1)}
 /* hero: banner horizontal con foto; aspect-ratio de la foto para que se vea entera a todo el ancho */
 .hero{position:relative;aspect-ratio:1333/750;min-height:520px;display:flex;align-items:center;overflow:hidden;
   background:url("banner.jpg") center/cover no-repeat}
+/* sombra suave solo detrás del texto, para que la foto se vea entera */
 .hero::before{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.88) 32%,rgba(0,0,0,.45) 62%,rgba(0,0,0,.15) 100%),
-             linear-gradient(0deg,var(--bg) 0%,rgba(11,11,11,0) 22%)}
+  background:radial-gradient(ellipse 45% 70% at 26% 50%,rgba(0,0,0,.6) 0%,rgba(0,0,0,.3) 55%,rgba(0,0,0,0) 100%)}
 .hero .wrap{position:relative;width:100%}
 .hero-content{max-width:440px;text-align:center;padding:30px 0}
 .hero img{width:min(380px,80vw);margin:0 auto -10px;mix-blend-mode:screen}
-.hero p{margin:0 auto 26px;color:#d8cfbd;font-size:1.05rem}
+.hero .slogan{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(1.7rem,3.2vw,2.3rem);line-height:1.2;color:#f6e7bf;margin:0 0 12px;text-shadow:0 2px 14px rgba(0,0,0,.85)}
+.hero p{margin:0 auto 26px;color:#efe6d3;font-size:1.05rem;text-shadow:0 1px 10px rgba(0,0,0,.9)}
 @media(max-width:760px){
   .hero{background-position:62% center;aspect-ratio:auto;min-height:560px}
-  .hero::before{background:linear-gradient(0deg,var(--bg) 0%,rgba(0,0,0,.72) 35%,rgba(0,0,0,.6) 100%)}
+  .hero::before{background:rgba(0,0,0,.5)}
   .hero-content{margin:0 auto}
 }
 .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -154,6 +155,7 @@ footer a{color:var(--gold2)}
   <div class="wrap">
     <div class="hero-content">
       <img src="logo.png" alt="Bloom Multiespacio">
+      <h1 class="slogan">Donde tu belleza florece</h1>
       <p>Un espacio pensado para vos: peluquería, uñas, pestañas, dermatocosmiatría, pedicuría y masajes, todo en un mismo lugar.</p>
       <div class="btns">
         <a class="btn primary" data-wa="Hola! Quiero reservar un turno en Bloom Multiespacio." href="#">Reservar turno</a>
