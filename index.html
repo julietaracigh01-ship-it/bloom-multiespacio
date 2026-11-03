@@ -42,9 +42,9 @@ nav ul a:hover{color:var(--gold1)}
 /* hero: banner horizontal con foto; aspect-ratio de la foto para que se vea entera a todo el ancho */
 .hero{position:relative;aspect-ratio:1333/750;min-height:520px;display:flex;align-items:center;overflow:hidden;
   background:url("banner.jpg") center/cover no-repeat}
-/* sombra suave solo detrás del texto, para que la foto se vea entera */
+/* velo oscuro parejo, mismo tratamiento que "Por qué elegirnos" pero más liviano */
 .hero::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 42% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,0) 100%)}
+  background:linear-gradient(rgba(11,11,11,.5),rgba(11,11,11,.6))}
 .hero .wrap{position:relative;width:100%}
 .hero-content{max-width:620px;margin:0 auto;text-align:center;padding:30px 0}
 .hero img{width:min(560px,88vw);margin:0 auto 20px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.55))}
@@ -53,7 +53,7 @@ nav ul a:hover{color:var(--gold1)}
 .hero p{max-width:480px;margin:0 auto 26px;color:#efe6d3;font-size:1.05rem;text-shadow:0 1px 10px rgba(0,0,0,.9)}
 @media(max-width:760px){
   .hero{background-position:62% center;aspect-ratio:auto;min-height:560px}
-  .hero::before{background:rgba(0,0,0,.5)}
+  .hero::before{background:linear-gradient(rgba(11,11,11,.55),rgba(11,11,11,.65))}
   .hero-content{margin:0 auto}
 }
 .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -97,7 +97,7 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,5
 .note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
 
 /* por qué elegirnos: foto de fondo bajo un velo oscuro */
-#porque{background:linear-gradient(rgba(11,11,11,.84),rgba(11,11,11,.9)),url("s3.jpg") center/cover no-repeat}
+#porque{background:linear-gradient(rgba(11,11,11,.76),rgba(11,11,11,.84)),url("s3.jpg") center/cover no-repeat}
 .why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .why-item{background:rgba(23,21,18,.72);backdrop-filter:blur(4px);border:1px solid var(--line);border-top:2px solid var(--gold2);border-radius:6px;padding:26px 22px;text-align:center}
 .why-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;line-height:1}
