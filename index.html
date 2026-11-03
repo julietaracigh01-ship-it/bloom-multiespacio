@@ -40,8 +40,8 @@ nav ul a:hover{color:var(--gold1)}
 @media(max-width:640px){nav ul{gap:14px;font-size:.7rem;letter-spacing:.08em}.brand{display:none}nav .wrap{justify-content:center}}
 
 /* hero: banner horizontal con foto; aspect-ratio de la foto para que se vea entera a todo el ancho */
-.hero{position:relative;aspect-ratio:1333/750;min-height:520px;display:flex;align-items:center;overflow:hidden;
-  background:url("banner.jpg") center/cover no-repeat}
+.hero{position:relative;aspect-ratio:16/9;min-height:520px;display:flex;align-items:center;overflow:hidden;
+  background:url("banner2.jpg") center/cover no-repeat}
 /* velo oscuro parejo, mismo tratamiento que "Por qué elegirnos" pero más liviano */
 .hero::before{content:"";position:absolute;inset:0;
   background:linear-gradient(rgba(11,11,11,.5),rgba(11,11,11,.6))}
@@ -52,7 +52,7 @@ nav ul a:hover{color:var(--gold1)}
 .hero .btn.ghost{background:rgba(0,0,0,.5);backdrop-filter:blur(4px)}
 .hero p{max-width:480px;margin:0 auto 26px;color:#efe6d3;font-size:1.05rem;text-shadow:0 1px 10px rgba(0,0,0,.9)}
 @media(max-width:760px){
-  .hero{background-position:62% center;aspect-ratio:auto;min-height:560px}
+  .hero{background-position:45% center;aspect-ratio:auto;min-height:560px}
   .hero::before{background:linear-gradient(rgba(11,11,11,.55),rgba(11,11,11,.65))}
   .hero-content{margin:0 auto}
 }
