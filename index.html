@@ -182,7 +182,6 @@ footer a{color:var(--gold2)}
     <div class="divider"></div>
     <div class="tabs" id="tabs"></div>
     <div id="groups"></div>
-    <p class="note">Los precios pueden variar. Consultá por WhatsApp para confirmar tu turno.</p>
   </div>
 </section>
 
@@ -339,7 +338,7 @@ function itemHtml(n, pr, desc) {
       <div class="item">
         <span class="name">${n}${desc ? `<small>${desc}</small>` : ""}</span><span class="dots"></span>
         <span class="price gold-text">${fmt(pr)}</span>
-        <a class="book" target="_blank" rel="noopener" href="${waLink(`Hola! Quiero reservar un turno para: ${n}.`)}">Turno</a>
+        <a class="book" target="_blank" rel="noopener" href="${waLink(`Hola! Quiero reservar un turno para: ${n}.`)}">Agendar turno</a>
       </div>`;
 }
 
