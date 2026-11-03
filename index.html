@@ -96,6 +96,15 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,5
 @media(max-width:560px){.item{flex-wrap:wrap}.item .dots{display:none}.item .name{flex:1 0 60%}}
 .note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
 
+/* por qué elegirnos */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why-item{background:var(--card);border:1px solid var(--line);border-top:2px solid var(--gold2);border-radius:6px;padding:26px 22px;text-align:center}
+.why-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;line-height:1}
+.why-item h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;line-height:1.2;margin:10px 0 8px}
+.why-item p{color:var(--muted);font-size:.92rem}
+@media(max-width:900px){.why{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.why{grid-template-columns:1fr;gap:12px}}
+
 /* reseñas */
 #resenas{border-top:1px solid var(--line)}
 .rating{display:flex;align-items:baseline;justify-content:center;gap:12px;flex-wrap:wrap;margin:-14px 0 30px}
@@ -164,6 +173,36 @@ footer a{color:var(--gold2)}
     <div class="tabs" id="tabs"></div>
   </div>
   <div id="groups"></div>
+</section>
+
+<section class="alt" id="porque">
+  <div class="wrap">
+    <div class="eyebrow gold-text">Bloom</div>
+    <h2>Por qué elegirnos</h2>
+    <div class="divider"></div>
+    <div class="why">
+      <div class="why-item">
+        <span class="why-num gold-text">01</span>
+        <h3>Asesoramiento personalizado</h3>
+        <p>Antes de cada tratamiento evaluamos qué es lo mejor para vos, tu piel y tu pelo.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num gold-text">02</span>
+        <h3>Todo en un mismo lugar</h3>
+        <p>Peluquería, uñas, pestañas, dermatocosmiatría, pedicuría y masajes, con profesionales de cada área.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num gold-text">03</span>
+        <h3>Cuidado en cada detalle</h3>
+        <p>Higiene, prolijidad y dedicación en cada servicio, de principio a fin.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-num gold-text">04</span>
+        <h3>Un momento para vos</h3>
+        <p>Un espacio pensado para desconectar de la rutina y salir renovada.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="resenas" hidden>
