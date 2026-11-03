@@ -78,6 +78,8 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2rem,5
 .tab.on{background:var(--gold);color:#1a1409;border-color:transparent;font-weight:500}
 .group{display:none;max-width:720px;margin:0 auto}
 .group.on{display:block}
+.group-img{display:block;width:100%;aspect-ratio:21/8;object-fit:cover;border-radius:6px;border:1px solid var(--line);margin-bottom:24px}
+@media(max-width:560px){.group-img{aspect-ratio:16/9}}
 .group-head{text-align:center;margin-bottom:22px}
 .group-head h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.7rem}
 .group-head span{color:var(--muted);font-size:.9rem}
@@ -240,19 +242,19 @@ const WA = "5491141741944";
 // Cada servicio es ["Nombre", precio] o ["Nombre", precio, "descripción"].
 // {cat:"..."} agrega un subtítulo y {nota:"..."} una aclaración.
 const equipo = [
-  { id:"peluqueria", tab:"Peluquería", nombre:"Karina Brandán", rol:"Peluquería", dias:"Martes y sábados", horario:"10 a 19 hs",
+  { id:"peluqueria", tab:"Peluquería", foto:"s1.jpg", nombre:"Karina Brandán", rol:"Peluquería", dias:"Martes y sábados", horario:"10 a 19 hs",
     servicios:[
       ["Alisado",65000],["Keratina",60000],["Botox capilar",55000],["Levanta muerto capilar",50000],
       ["Cauterización",50000],["Nutrición",35000],
       ["Trenzas · hasta 6 trenzas",15000],["Trenzas con diseño",20000],["Corona completa",30000]
     ]},
-  { id:"bea", tab:"Uñas, pestañas y facial", nombre:"Bea García", rol:"Uñas · Pestañas · Facial", dias:"Martes a sábado", horario:"12 a 19:30 hs",
+  { id:"bea", tab:"Uñas, pestañas y facial", foto:"s2.jpg", nombre:"Bea García", rol:"Uñas · Pestañas · Facial", dias:"Martes a sábado", horario:"12 a 19:30 hs",
     servicios:[
       ["Soft gel",28000],["Esmaltado semipermanente con manicura rusa",25000],["Esmaltado tradicional",22000],
       ["Extensión de pestañas veganas",35000],["Lifting de pestañas coreano",33000],["Perfilado con diseño",18000],
       ["Limpieza profunda facial con activos",35000],["Belleza de pies + semipermanente",30000]
     ]},
-  { id:"julieta", tab:"Dermatocosmiatría", nombre:"Julieta Bringas", rol:"Dermatocosmiatra", dias:"Lunes a sábado", horario:"9 a 19 hs",
+  { id:"julieta", tab:"Dermatocosmiatría", foto:"s3.jpg", nombre:"Julieta Bringas", rol:"Dermatocosmiatra", dias:"Lunes a sábado", horario:"9 a 19 hs",
     intro:"Todos nuestros tratamientos son personalizados. Trabajamos a partir de una evaluación para identificar las necesidades de cada piel y seleccionar las técnicas, activos y aparatología más adecuados.",
     servicios:[
       {cat:"Tratamientos faciales"},
@@ -273,9 +275,9 @@ const equipo = [
       ["Exfoliación e hidratación de piernas",35000,"Tratamiento para renovar, suavizar e hidratar la piel."],
       ["Limpieza profunda de espalda + peeling o dermaplaning",45000,"Protocolo combinado para favorecer la renovación y mejorar la textura y apariencia de la piel, según evaluación previa."]
     ]},
-  { id:"claudia", tab:"Pedicuría", nombre:"Claudia Brandán", rol:"Pedicuría", dias:"Martes y viernes", horario:"12 a 19 hs",
+  { id:"claudia", tab:"Pedicuría", foto:"s4.jpg", nombre:"Claudia Brandán", rol:"Pedicuría", dias:"Martes y viernes", horario:"12 a 19 hs",
     servicios:[["Tratamiento de pedicuría",33000]]},
-  { id:"flor", tab:"Masajes", nombre:"Florencia Lentines", rol:"Masajes", dias:"Lunes, martes y jueves", horario:"18 a 19 hs",
+  { id:"flor", tab:"Masajes", foto:"s5.jpg", nombre:"Florencia Lentines", rol:"Masajes", dias:"Lunes, martes y jueves", horario:"18 a 19 hs",
     servicios:[
       ["Masaje descontracturante",40000],["Masaje relajante",35000],["Piernas cansadas",30000],["Reflexología podal",35000]
     ]}
@@ -297,6 +299,7 @@ document.getElementById("tabs").innerHTML = equipo.map((p,i) =>
   `<button class="tab${i?"":" on"}" data-id="${p.id}">${p.tab}</button>`).join("");
 document.getElementById("groups").innerHTML = equipo.map((p,i) => `
   <div class="group${i?"":" on"}" id="g-${p.id}">
+    ${p.foto ? `<img class="group-img" src="${p.foto}" alt="${p.tab}" loading="lazy">` : ""}
     <div class="group-head"><h3>${p.nombre}</h3><span>${p.rol} · ${p.dias} · ${p.horario}</span></div>
     ${p.intro ? `<p class="intro">${p.intro}</p>` : ""}
     ${p.servicios.map(s => s.cat ? `<div class="cat">${s.cat}</div>`
